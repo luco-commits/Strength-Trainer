@@ -1,12 +1,12 @@
 {
-  "name": "Luke Connor 10-Week Upper Body Program",
-  "short_name": "Luke Workout",
-  "description": "A guided 10-week upper body home workout tracker.",
-  "start_url": "./index.html",
+  "name": "Strength Trainer",
+  "short_name": "Strength",
+  "description": "10-week upper body home workout program",
+  "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#081426",
-  "theme_color": "#0b6cff",
+  "background_color": "#07111f",
+  "theme_color": "#1677ff",
   "icons": [
     {
       "src": "icon-192.png",
