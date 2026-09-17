@@ -13,3 +13,6 @@ This version removes the side navigation and provides a guided, step by step wor
 This release uses a new service worker cache name. If the installed phone app still shows an older design, remove the app shortcut, clear site data for the GitHub Pages site, reload the site and install it again.
 
 Progress is held in local browser storage. The guided workout advances one repetition at a time, then one set at a time, then one exercise at a time.
+
+## Set based workflow
+The Done button now advances after the full set, rather than after each repetition. The required repetitions remain clearly displayed for each set.
