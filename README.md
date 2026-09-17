@@ -19,3 +19,6 @@ The Done button now advances after the full set, rather than after each repetiti
 
 ## Rest timer update
 All rest periods are 45 seconds. The timer now appears as an overlay while the current exercise remains visible underneath.
+
+## Schedule controls and countdown sound
+The overview now supports resetting a completed day, reopening the most recently completed day, and resetting the complete schedule. During the 45 second rest overlay, an energetic tone plays once per second at 5, 4, 3, 2 and 1 seconds. Browser audio restrictions require the workout to be started by a user tap, which is already part of the app flow.
