@@ -1,7 +1,7 @@
 {
   "name": "Strength Trainer",
   "short_name": "Strength",
-  "description": "10-week upper body home workout program",
+  "description": "Guided 10-week upper body home workout program",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

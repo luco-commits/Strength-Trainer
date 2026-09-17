@@ -1,13 +1,15 @@
-# Strength Trainer PWA
+# Strength Trainer guided update
 
-## Update the existing GitHub Pages site
-1. Open the `Strength-Trainer` repository on GitHub.
+This version removes the side navigation and provides a guided, step by step workout flow.
+
+## Upload to GitHub
+1. Open the `Strength-Trainer` repository.
 2. Select **Add file**, then **Upload files**.
-3. Drag every item from this unzipped package, including the `images` folder, into the repository root.
-4. Confirm that GitHub shows the new image files under `images/`.
-5. Select **Commit changes**. Existing files with matching names will be replaced.
-6. Wait one to five minutes, then refresh the GitHub Pages site.
+3. Upload every item from this package, including the complete `images` folder.
+4. Commit the changes.
+5. Wait one to five minutes for GitHub Pages to redeploy.
 
-If an installed phone version still shows the old design, close it, clear the site data or uninstall the shortcut, visit the website in the browser, refresh, then install it again.
+## Important cache step
+This release uses a new service worker cache name. If the installed phone app still shows an older design, remove the app shortcut, clear site data for the GitHub Pages site, reload the site and install it again.
 
-Progress is stored only in the current browser using local storage. Replacing the application files should preserve progress, but clearing site data will remove it.
+Progress is held in local browser storage. The guided workout advances one repetition at a time, then one set at a time, then one exercise at a time.
