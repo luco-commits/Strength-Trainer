@@ -16,3 +16,6 @@ Progress is held in local browser storage. The guided workout advances one repet
 
 ## Set based workflow
 The Done button now advances after the full set, rather than after each repetition. The required repetitions remain clearly displayed for each set.
+
+## Rest timer update
+All rest periods are 45 seconds. The timer now appears as an overlay while the current exercise remains visible underneath.
