@@ -1,7 +1,7 @@
 {
   "name": "Strength Trainer",
   "short_name": "Strength",
-  "description": "Guided 10-week upper body home workout program",
+  "description": "Guided 10-week upper body home workout program with on-device camera rep counting",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
