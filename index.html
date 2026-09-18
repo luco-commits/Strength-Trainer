@@ -8,7 +8,7 @@
 <base href="/Strength-Trainer/v9-preview/">
 <link rel="manifest" href="/Strength-Trainer/manifest.json">
 <link rel="apple-touch-icon" href="/Strength-Trainer/icon-192.png">
-<link rel="stylesheet" href="style.css?v=9.6">
+<link rel="stylesheet" href="style.css?v=9.7">
 <style>#cameraOverlay{display:none!important}</style>
 </head>
 <body>
@@ -17,7 +17,6 @@
 <main><section id="home" class="view active"></section><section id="runner" class="view"><div class="screen" id="run"></div></section></main>
 </div>
 <script>
-// One-time production migration: preserve the user's existing V8 progress rather than beta test progress.
 try{
   if(!localStorage.getItem('strengthV9ProductionMigrated')){
     const v8=localStorage.getItem('strengthGuidedV8');
@@ -26,19 +25,24 @@ try{
   }
 }catch(e){}
 </script>
-<script src="app.js?v=9.6"></script>
-<script type="module" src="camera.js?v=9.6"></script>
+<script src="app.js?v=9.7"></script>
+<script type="module" src="camera.js?v=9.7"></script>
 <script>
 function productionise(){
   document.querySelectorAll('.betaNotice').forEach(x=>x.remove());
-  document.querySelectorAll('.eyebrow').forEach(x=>{x.textContent=x.textContent.replace('GUIDED 10 WEEK PROGRAM · CAMERA BETA','GUIDED 10 WEEK PROGRAM · CAMERA REP COUNTER').replace('V9 CAMERA REP COUNTER','CAMERA REP COUNTER')});
-  document.querySelectorAll('.cameraBadge').forEach(x=>x.textContent='ON DEVICE');
+  document.querySelectorAll('.eyebrow').forEach(x=>{
+    const next=x.textContent.replace('GUIDED 10 WEEK PROGRAM · CAMERA BETA','GUIDED 10 WEEK PROGRAM · CAMERA REP COUNTER').replace('V9 CAMERA REP COUNTER','CAMERA REP COUNTER');
+    if(x.textContent!==next)x.textContent=next;
+  });
+  document.querySelectorAll('.cameraBadge').forEach(x=>{if(x.textContent!=='ON DEVICE')x.textContent='ON DEVICE'});
   document.querySelectorAll('.cameraPrivacy').forEach(x=>x.textContent='The camera feed stays on this device. Pose landmarks are processed in your browser; video is not recorded or uploaded by this app.');
-  document.querySelectorAll('.scheduleActions .danger').forEach(x=>x.textContent='Reset full schedule');
+  document.querySelectorAll('.scheduleActions .danger').forEach(x=>{if(x.textContent!=='Reset full schedule')x.textContent='Reset full schedule'});
   document.querySelectorAll('.confirmText').forEach(x=>x.textContent='Reset a day lets you choose a completed day in this week. Go back one day reopens the most recently completed day.');
 }
-const productionObserver=new MutationObserver(productionise);
-productionObserver.observe(document.body,{childList:true,subtree:true});
+const baseRenderHome=renderHome;
+renderHome=function(){baseRenderHome();productionise()};
+const baseDraw=draw;
+draw=function(){baseDraw();productionise()};
 productionise();
 resetDayPrompt=function(w){let completed=[];for(let d=1;d<=7;d++)if(isDone(w,d))completed.push(d);if(!completed.length){alert('There are no completed days to reset in Week '+w+'.');return}let answer=prompt('Enter the completed day to reset in Week '+w+': '+completed.join(', '));if(answer===null)return;let d=Number(answer);if(!completed.includes(d)){alert('Please enter one of these completed days: '+completed.join(', '));return}if(confirm('Reset Week '+w+', Day '+d+'?')){delete S.days[dk(w,d)];S.work=null;save();renderHome()}};
 resetSchedule=function(){if(confirm('Reset the complete 10 week schedule? All completed days and the current workout will be removed.')){if(confirm('This cannot be undone. Reset everything?')){S={days:{},work:null,week:1};save();renderHome()}}};
